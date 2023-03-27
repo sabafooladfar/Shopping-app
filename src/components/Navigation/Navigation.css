@@ -1,0 +1,24 @@
+.navContainer {
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav a {
+  margin: 0 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.nav a:hover, .activeLink{
+  background-color: #F5F5F5;
+}
+.nav a:focus{
+    color: #90A4AE;
+}
