@@ -1,11 +1,13 @@
 import * as data from "../data";
 import Layout from "../Layout/Layout";
+import { useCartActions } from "../Providers/CartProvider";
 
 const HomePage = () => {
-
-const addToCartHandler =(product)=>{
-  console.log(product)
-}
+  const dispatch = useCartActions();
+  const addToCartHandler = (product) => {
+    // console.log(product);
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
 
   return (
     <Layout>
@@ -13,9 +15,9 @@ const addToCartHandler =(product)=>{
         <section className="productList">
           {data.products.map((product) => {
             return (
-              <div className="product">
+              <div key={product.id} className="product">
                 <div className="productImg">
-                <img src={product.image} />
+                  <img src={product.image} />
                 </div>
                 <div className="productDesc">
                   <p>{product.name}</p>
@@ -27,7 +29,12 @@ const addToCartHandler =(product)=>{
                       ""
                     )}
                   </div>
-                  <button onClick={()=>addToCartHandler(product)} className="addToCartBtn">Add To Cart</button>
+                  <button
+                    onClick={() => addToCartHandler(product)}
+                    className="addToCartBtn"
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             );
