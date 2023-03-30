@@ -22,3 +22,21 @@
 .nav a:focus{
     color: #90A4AE;
 }
+.cartLink{
+  position: relative;
+}
+.cartLink span{
+  position: absolute;
+  bottom: 15px;
+  right: 9px;
+  font-size: 12px;
+  font-weight: bold ;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #90A4AE;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

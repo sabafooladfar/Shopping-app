@@ -1,14 +1,23 @@
+import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import { useCart } from "../Providers/CartProvider";
+import { useCart, useCartActions } from "../Providers/CartProvider";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cart } = useCart();
+  const { cart, total } = useCart();
+  const dispatch = useCartActions();
+
+  const decHandler = (cartItem) => {
+    dispatch({ type: "ADD_TO_CART", payload: cartItem });
+  };
+  const incHandler = (cartItem) => {
+    dispatch({ type: "REMOVE_PRODUCT", payload: cartItem });
+  };
 
   if (!cart.length)
     return (
       <Layout>
-        <p>shopping cart is empty</p>
+        <p style={{textAlign:"center",marginTop:"20px"}}>shopping cart is empty</p>
       </Layout>
     );
 
@@ -25,17 +34,16 @@ const Cart = () => {
                   </div>
                   <p>{item.name}</p>
                   <p>{item.price * item.quantity} $</p>
-                  <div>
-                    <button>remove</button>
+                  <div className="cartItemBtns">
+                    <button className="addBtn" onClick={() => incHandler(item)}>-</button>
                     <button>{item.quantity}</button>
-                    <button>add</button>
+                    <button className="decBtn" onClick={() => decHandler(item)}>+</button>
                   </div>
                 </div>
               );
             })}
-            
           </div>
-          <section className="cartSummary">cart summary</section>
+          <CartSummary cart={cart} total={total} />
         </section>
       </main>
     </Layout>
@@ -43,3 +51,30 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const CartSummary = ({ cart, total }) => {
+  const originalTotalPrice = cart.length
+    ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
+    : 0;
+
+  return (
+    <section className="cartSummary">
+      <h4>Cart Summary</h4>
+      <div className="cartSummaryItem">
+        <p>Original Price</p>
+        <p>{originalTotalPrice} $</p>
+      </div>
+      <div className="cartSummaryItem disSummary">
+        <p>Discount</p>
+        <p>{originalTotalPrice - total} $</p>
+      </div>
+      <div className="cartSummaryItem">
+        <p>Total Price</p>
+        <p>{total} $</p>
+      </div>
+      <Link to="/checkout">
+        <button className="checkoutBtn">Checkout</button>
+      </Link>
+    </section>
+  );
+};

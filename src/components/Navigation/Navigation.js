@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useCart } from "../../Providers/CartProvider";
 import "./Navigation.css";
 
 const Navigation = () => {
+  const {cart} = useCart();
   return (
     <header className="navContainer">
       <nav className="nav">
@@ -14,13 +16,14 @@ const Navigation = () => {
               home
             </NavLink>
           </li>
-          <li>
+          <li className="cartLink">
             <NavLink
               to="/cart"
               className={(navData) => (navData.isActive ? "activeLink" : "")}
             >
               cart
             </NavLink>
+            <span>{cart.length}</span>
           </li>
         </ul>
       </nav>
