@@ -67,18 +67,17 @@
 .checkoutBtn:active {
   color: #f6f6f6;
 }
-.cartItemBtns button{
-    padding: 3px 7px;
-    outline: none;
-    /* border-radius: 0; */
+.cartItemBtns button {
+  padding: 3px 7px;
+  outline: none;
+  /* border-radius: 0; */
   border: 1px solid #7c7c7c;
-    
 }
-.addBtn{
+.addBtn {
   border-radius: 5px 0 0 5px;
   cursor: pointer;
 }
-.decBtn{
+.decBtn {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
