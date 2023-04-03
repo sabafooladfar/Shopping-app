@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Input from "../../common/Input";
 import "../signup-login.css";
@@ -32,6 +32,7 @@ const validationSchema = Yup.object({
 });
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const onSubmit = async (values) => {
     // console.log(values);
@@ -44,6 +45,7 @@ const SignupForm = () => {
     };
     try {
       const { data } = await signupUser(user);
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
