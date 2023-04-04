@@ -28,6 +28,7 @@ const LoginForm = () => {
     try {
       const { data } = await loginUser(values);
       setAuth(data);
+      setError(null);
       navigate("/");
     } catch (error) {
       if (error.response && error.response.data.message) {

@@ -48,6 +48,7 @@ const SignupForm = () => {
     try {
       const { data } = await signupUser(user);
       setAuth(data);
+      setError(null);
       navigate("/");
     } catch (error) {
       if (error.response && error.response.data.message) {
