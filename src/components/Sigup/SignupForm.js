@@ -5,6 +5,7 @@ import Input from "../../common/Input";
 import "../signup-login.css";
 import { toast } from "react-toastify";
 import { signupUser } from "../../services/signupService";
+import { useAuthActions } from "../../Providers/AuthProvider";
 import { useState } from "react";
 
 const initialValues = {
@@ -33,6 +34,7 @@ const validationSchema = Yup.object({
 
 const SignupForm = () => {
   const navigate = useNavigate();
+  const setAuth = useAuthActions();
   const [error, setError] = useState(null);
   const onSubmit = async (values) => {
     // console.log(values);
@@ -45,6 +47,7 @@ const SignupForm = () => {
     };
     try {
       const { data } = await signupUser(user);
+      setAuth(data);
       navigate("/");
     } catch (error) {
       if (error.response && error.response.data.message) {
