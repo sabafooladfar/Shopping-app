@@ -21,7 +21,7 @@ const Checkout = () => {
         {cart &&
           cart.map((c) => {
             return (
-              <div>
+              <div key={c.id}>
                 <p>Product name : {c.name}</p>
                 <p>Quantity : {c.quantity}</p>
                 <p>Price : {c.quantity * c.offPrice}</p>

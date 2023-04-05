@@ -4,7 +4,9 @@ const AuthContext = createContext();
 const AuthContextDispatcher = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(() => {
+    return JSON.parse(localStorage.getItem("authState")) || false
+  });
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("authState")) || false;

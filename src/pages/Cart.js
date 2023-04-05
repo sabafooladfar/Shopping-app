@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import { useAuth } from "../Providers/AuthProvider";
 import { useCart, useCartActions } from "../Providers/CartProvider";
 import "./Cart.css";
 
 const Cart = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
+  
 
   const decHandler = (cartItem) => {
     dispatch({ type: "ADD_TO_CART", payload: cartItem });
@@ -53,6 +55,7 @@ const Cart = () => {
 export default Cart;
 
 const CartSummary = ({ cart, total }) => {
+  const userData = useAuth();
   const originalTotalPrice = cart.length
     ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
     : 0;
@@ -72,7 +75,7 @@ const CartSummary = ({ cart, total }) => {
         <p>Total Price</p>
         <p>{total} $</p>
       </div>
-      <Link to="/checkout">
+      <Link to="/login?redirect=/checkout">
         <button className="checkoutBtn">Checkout</button>
       </Link>
     </section>
