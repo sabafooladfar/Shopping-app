@@ -1,0 +1,19 @@
+.profileCenter{
+    padding: 20px;
+    border: 1px solid #7c7c7c;
+    border-radius: 5px;
+}
+.profileCenter p{
+margin: 10px;
+}
+.logoutBtn{
+    padding: 6px 15px;
+  outline: none;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #90a4ae;
+  font-weight: bold;
+}

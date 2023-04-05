@@ -9,7 +9,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import AuthProvider from "./Providers/AuthProvider";
-import Profile from "./pages/Profile";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
