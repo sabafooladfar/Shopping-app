@@ -1,5 +1,4 @@
 import { useCart } from "../../Providers/CartProvider";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../Providers/AuthProvider";
 import "./checkout.css";
 

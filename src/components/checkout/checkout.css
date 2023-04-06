@@ -2,19 +2,26 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    max-width: 1170px;
+    width: 100%;
+    height: auto;
 }
 .userDetail{
     border-radius: 5px;
     padding: 20px;
     border: 1px solid #7c7c7c;
-    width: 50%;
+    /* width: 50%; */
     margin: 30px;
-    height: 200px;
+    height: 250px;
 }
 .productsDetail{
     border: 1px solid #7c7c7c;
     border-radius: 5px;
-    width: 50%;
+    /* width: 50%; */
     padding: 20px;
     margin: 30px;
     height: auto;

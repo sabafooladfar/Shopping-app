@@ -7,7 +7,6 @@ import "./Cart.css";
 const Cart = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
-  
 
   const decHandler = (cartItem) => {
     dispatch({ type: "ADD_TO_CART", payload: cartItem });
@@ -19,7 +18,9 @@ const Cart = () => {
   if (!cart.length)
     return (
       <Layout>
-        <p style={{textAlign:"center",marginTop:"20px"}}>shopping cart is empty</p>
+        <p style={{ textAlign: "center", marginTop: "20px" }}>
+          shopping cart is empty
+        </p>
       </Layout>
     );
 
@@ -37,15 +38,21 @@ const Cart = () => {
                   <p>{item.name}</p>
                   <p>{item.price * item.quantity} $</p>
                   <div className="cartItemBtns">
-                    <button className="addBtn" onClick={() => incHandler(item)}>-</button>
+                    <button className="addBtn" onClick={() => incHandler(item)}>
+                      -
+                    </button>
                     <button>{item.quantity}</button>
-                    <button className="decBtn" onClick={() => decHandler(item)}>+</button>
+                    <button className="decBtn" onClick={() => decHandler(item)}>
+                      +
+                    </button>
                   </div>
                 </div>
               );
             })}
           </div>
-          <CartSummary cart={cart} total={total} />
+          <div className="cartSummary">
+            <CartSummary cart={cart} total={total} />
+          </div>
         </section>
       </main>
     </Layout>
@@ -55,13 +62,12 @@ const Cart = () => {
 export default Cart;
 
 const CartSummary = ({ cart, total }) => {
-  const userData = useAuth();
   const originalTotalPrice = cart.length
     ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
     : 0;
 
   return (
-    <section className="cartSummary">
+    <section>
       <h4>Cart Summary</h4>
       <div className="cartSummaryItem">
         <p>Original Price</p>
