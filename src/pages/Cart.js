@@ -7,7 +7,7 @@ import "./Cart.css";
 const Cart = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
-
+  
   const decHandler = (cartItem) => {
     dispatch({ type: "ADD_TO_CART", payload: cartItem });
   };

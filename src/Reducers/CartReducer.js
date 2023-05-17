@@ -44,6 +44,8 @@ const cartReducer = (state, action) => {
         };
       }
     }
+    case "SET_CART":
+      return action.payload;
     default:
       return state;
   }
